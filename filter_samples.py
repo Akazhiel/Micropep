@@ -1,9 +1,9 @@
 import os
-import pandas as pd
-import argparse
-from pathlib import Path
-import pyranges as pr
 import re
+import argparse
+import pandas as pd
+import pyranges as pr
+from pathlib import Path
 
 
 def main(tracking_file, gtf_file, samples, output):
