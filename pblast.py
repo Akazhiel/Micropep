@@ -1,11 +1,10 @@
 import os
-import pandas as pd
 import argparse
+import subprocess
+import pandas as pd
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
-import subprocess
-
 
 def main(input_csv, database, exclude, missmatch, output):
 
