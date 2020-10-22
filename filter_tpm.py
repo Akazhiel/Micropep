@@ -1,10 +1,10 @@
 import os
-from pathlib import Path
-import argparse
-import pyranges as pr
-import pandas as pd
 import re
+import argparse
 import numpy as np
+import pandas as pd
+import pyranges as pr
+from pathlib import Path
 
 
 def main(file_name, filter, output):
@@ -13,7 +13,6 @@ def main(file_name, filter, output):
         if output and not os.path.isfile(output)
         else (re.sub(".gtf", "", Path(file_name).name) + "_filtered" + ".gtf")
     )
-    print(results_name)
     if not (0 < filter < 1):
         print("Filter value must be bigger than 0 and smaller than 1.")
 
