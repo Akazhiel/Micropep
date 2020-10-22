@@ -1,11 +1,10 @@
-import pandas as pd
+import os
 import argparse
+import numpy as np
+import pandas as pd
+import pyranges as pr
 from Bio import SeqIO
 from Bio.Seq import Seq
-import pyranges as pr
-import os
-import numpy as np
-
 
 def obtain_fasta_chomosomes(fasta_file):
     records = list(SeqIO.parse(fasta_file, "fasta"))
