@@ -49,7 +49,7 @@ if __name__ == "__main__":
         "--tracking_file",
         "-tf",
         type=str,
-        required=False,
+        required=True,
         help="Provide the path to the tracking file obtained from gffcompare.",
     )
     parser.add_argument(
