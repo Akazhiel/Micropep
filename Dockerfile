@@ -23,7 +23,7 @@ ENV PATH /root/anaconda3/bin:$PATH
 
 # Copy conda environment yml
 
-COPY * ./
+COPY environment.yml .
 
 # Updating Anaconda packages
 
@@ -37,4 +37,6 @@ ENV PATH /opt/conda/envs/$(head -1 environment.yml | cut -d' ' -f2)/bin:$PATH
 RUN rm environment.yml
 
 # Copying pipeline scripts
+RUN mkdir scripts && cd scripts
+COPY *.py /Micropeptide/scripts/
 RUN python setup.py install
