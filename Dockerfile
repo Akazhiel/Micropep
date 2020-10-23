@@ -22,7 +22,7 @@ ENV PATH /root/anaconda3/bin:$PATH
 
 # Copy conda environment yml
 
-COPY * .
+COPY * ./
 
 # Updating Anaconda packages
 
