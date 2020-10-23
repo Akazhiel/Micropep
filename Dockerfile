@@ -40,4 +40,3 @@ RUN rm environment.yml
 # Copying pipeline scripts
 RUN mkdir scripts
 COPY *.py README.md /Micropeptide/scripts/
-RUN cd ./scripts/ && python3 setup.py install
