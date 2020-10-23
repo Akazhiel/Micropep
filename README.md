@@ -78,7 +78,11 @@ python get_proteins.py --fasta_file /path/to/genome_fasta --annotation_gtf /path
 python pblast.py -i /path/to/input.csv -db /path/to/database --exclude --mismatch <num_of_mismatches> -o /path/to/output
 ```
 
-In order to run this final step, the desired database must be downloaded in the machine.
+In order to run this final step, the desired database must be downloaded in the machine. For more information on the databases available, please refer to the NCBI ![website](https://www.ncbi.nlm.nih.gov/books/NBK62345/#blast_ftp_site.The_blastdb_subdirectory)
+
+```bash
+update_blast --decompress <db-name>
+```
 
 ## License
 
