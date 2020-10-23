@@ -7,7 +7,7 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 
 
-def main(input_csv, database, exclude, missmatch, output):
+def main(input_csv, database, exclude, mismatch, output):
 
     file_name = (
         output if output and os.path.isfile(output) else "pblast_results.csv"
@@ -40,7 +40,7 @@ def main(input_csv, database, exclude, missmatch, output):
     subprocess.run("rm Protein.fa", shell=True)
 
     blast_results = pd.read_csv("blast_res.tab", sep="\t", header=None)
-    blast_results = blast_results[blast_results[4] <= missmatch][0]
+    blast_results = blast_results[blast_results[4] <= mismatch][0]
 
     if exclude:
         prot = prot[~prot["Protein_ID"].isin(blast_results)]
@@ -101,4 +101,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    main(args.input, args.database, args.exclude, args.missmatch, args.output)
+    main(args.input, args.database, args.exclude, args.mismatch, args.output)

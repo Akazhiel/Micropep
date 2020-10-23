@@ -2,9 +2,9 @@ import os
 import argparse
 import numpy as np
 import pandas as pd
-import pyranges as pr
+from Bio import Seq
 from Bio import SeqIO
-from Bio.Seq import Seq
+import pyranges as pr
 
 
 def obtain_fasta_chomosomes(fasta_file):
@@ -67,7 +67,6 @@ def main(
     protein_df = filter_by_overlap(
         fasta_file, annotation_gtf, input_file, overlap, biotype
     )
-    print(protein_df)
     protein_df.Chromosome = (
         protein_df.Chromosome.cat.remove_unused_categories()
     )
@@ -103,26 +102,30 @@ def main(
     final_df["Sequence"] = possible_seqs
     final_df = final_df.explode("Sequence")
     final_df = final_df[final_df["Sequence"].str.strip().astype(bool)]
-    final_df = final_df[final_df["Sequence"].str.len() <= aa_length]
-    final_df["Protein_ID"] = "Protein_" + pd.Series(
-        np.arange(1, len(final_df) + 1, 1)
+    results = (
+        final_df[final_df["Sequence"].str.len() <= aa_length]
+        .copy()
+        .reset_index(drop=True)
+    )
+    results["Protein_ID"] = "Protein_" + pd.Series(
+        np.arange(1, len(results) + 1, 1)
     ).astype(str)
     if not output:
-        final_df.to_csv(
+        results.to_csv(
             os.path.join(os.getcwd(), file_name),
             header=True,
             index=False,
             sep="\t",
         )
     elif os.path.isdir(output):
-        final_df.to_csv(
+        results.to_csv(
             os.path.join(output, file_name),
             header=True,
             index=False,
             sep="\t",
         )
     else:
-        final_df.to_csv(output, header=True, index=False, sep="\t")
+        results.to_csv(output, header=True, index=False, sep="\t")
 
 
 if __name__ == "__main__":
