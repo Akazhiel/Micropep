@@ -37,6 +37,6 @@ ENV PATH /opt/conda/envs/$(head -1 environment.yml | cut -d' ' -f2)/bin:$PATH
 RUN rm environment.yml
 
 # Copying pipeline scripts
-RUN mkdir scripts && cd scripts
-COPY *.py /Micropeptide/scripts/
-RUN python setup.py install
+RUN mkdir scripts
+COPY *.py README.md /Micropeptide/scripts/
+RUN cd ./scripts/ && python setup.py install
