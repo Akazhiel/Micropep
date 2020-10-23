@@ -6,6 +6,7 @@ import pyranges as pr
 from Bio import SeqIO
 from Bio.Seq import Seq
 
+
 def obtain_fasta_chomosomes(fasta_file):
     records = list(SeqIO.parse(fasta_file, "fasta"))
     chromosomes = []

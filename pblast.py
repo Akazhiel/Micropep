@@ -6,6 +6,7 @@ from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 
+
 def main(input_csv, database, exclude, missmatch, output):
 
     file_name = (
@@ -61,7 +62,7 @@ if __name__ == "__main__":
         metavar="\b",
         type=str,
         required=True,
-        help="Provide the path to the input file in which all aminoacids sequences are present under a column named 'Protein_ID'",
+        help="Provide the path to the input file in which all aminoacids sequences are present under a column named 'Sequence'",
     )
 
     parser.add_argument(
@@ -80,13 +81,13 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "--missmatch",
+        "--mismatch",
         "-mm",
         type=int,
         default=1,
         required=False,
         metavar="\b",
-        help="Blast results with more than %(default)s missmatches won't be excluded.",
+        help="Blast results with more than %(default)s mismatches won't be excluded.",
     )
 
     parser.add_argument(
