@@ -1,4 +1,3 @@
-#!/usr/bin/python
 """
 Micropeptide obtention pipeline.
 @author: Jonatan Gonzalez Rodriguez <jonatan.gonzalez.r@outlook.com>
