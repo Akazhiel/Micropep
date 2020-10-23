@@ -27,7 +27,7 @@ def main(tracking_file, gtf_file, samples, output):
         ]
         gtf_transcripts = gtf.subset(lambda df: df.Feature == "transcript")
         gtf_transcripts = gtf_transcripts[
-            gtf_transcripts.num_samples.astype(int) >= filter
+            gtf_transcripts.num_samples.astype(int) >= samples
         ]
         tracking_df = pd.read_csv(tracking_file, sep="\t", header=None)
         tpm_cols = tracking_df.iloc[:, 4:].apply(
