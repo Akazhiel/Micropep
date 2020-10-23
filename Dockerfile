@@ -1,5 +1,3 @@
-# We will use Ubuntu for our image
-
 FROM ubuntu:18.04
 
 WORKDIR /Micropeptide
@@ -11,11 +9,7 @@ RUN apt-get update && apt-get install -y \
     bzip2 \
     python3-dev \
     python-dev \
-    python-pip \
-    libpq-dev \
     build-essential
-
-RUN python -m pip install --upgrade pip setuptools wheel
 
 # Anaconda installing
 
@@ -45,4 +39,4 @@ RUN rm environment.yml
 # Copying pipeline scripts
 RUN mkdir scripts
 COPY *.py README.md /Micropeptide/scripts/
-RUN cd /Micropeptide/scripts/ && python setup.py install
+RUN cd /Micropeptide/scripts/ && python3 setup.py install
