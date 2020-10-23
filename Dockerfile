@@ -10,7 +10,11 @@ RUN apt-get update && apt-get install -y \
     wget \
     bzip2 \
     python3-dev \
-    python-dev 
+    python-dev \
+    python-pip \
+    libpq-dev
+
+RUN python -m pip install --upgrade pip setuptools wheel
 
 # Anaconda installing
 
