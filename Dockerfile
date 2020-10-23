@@ -9,7 +9,15 @@ WORKDIR /Micropeptide
 RUN apt-get update && apt-get install -y \
     wget \
     bzip2 \
-    python3-dev
+    python3-dev \
+    python-dev \
+    gcc \
+    gcc-c++ \
+    kernel-devel \
+    python-devel \
+    libxslt-devel \
+    libffi-devel \
+    openssl-devel
 
 # Anaconda installing
 
@@ -39,4 +47,4 @@ RUN rm environment.yml
 # Copying pipeline scripts
 RUN mkdir scripts
 COPY *.py README.md /Micropeptide/scripts/
-RUN cd ./scripts/ && python setup.py install
+RUN cd ./scripts/ && python3 setup.py install
