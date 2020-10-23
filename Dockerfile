@@ -8,7 +8,8 @@ WORKDIR /Micropeptide
 
 RUN apt-get update && apt-get install -y \
     wget \
-    bzip2
+    bzip2 \
+    python3-dev
 
 # Anaconda installing
 
