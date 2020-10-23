@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y \
     python3-dev \
     python-dev \
     python-pip \
-    libpq-dev
+    libpq-dev \
+    build-essential
 
 RUN python -m pip install --upgrade pip setuptools wheel
 
