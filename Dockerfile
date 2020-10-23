@@ -10,14 +10,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     bzip2 \
     python3-dev \
-    python-dev \
-    gcc \
-    gcc-c++ \
-    kernel-devel \
-    python-devel \
-    libxslt-devel \
-    libffi-devel \
-    openssl-devel
+    python-dev 
 
 # Anaconda installing
 
