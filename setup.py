@@ -33,7 +33,6 @@ setup(
         "pandas",
         "BioPython",
         "pyranges",
-        "blast",
     ],
     # test_suite = 'tests',
     scripts=glob.glob("*.py"),
