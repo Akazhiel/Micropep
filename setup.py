@@ -32,7 +32,6 @@ setup(
         "pandas",
         "BioPython",
     ],
-    # test_suite = 'tests',
     scripts=glob.glob("*.py"),
     classifiers=[
         "Intended Audience :: Science/Research",
