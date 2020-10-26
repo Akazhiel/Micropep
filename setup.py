@@ -29,9 +29,10 @@ setup(
     zip_safe=False,
     install_requires=[
         "setuptools",
-        "numpy",
-        "pandas",
-        "BioPython",
+        "numpy>=1.19.2",
+        "pandas>=1.1.2",
+        "BioPython>=1.78",
+        "pyranges>=0.0.85",
     ],
     scripts=glob.glob("*.py"),
     classifiers=[
