@@ -60,7 +60,7 @@ stringtie /path/to/bam -G /path/to/annotation_file -o /path/to/output
 filter_tpm.py -f /path/to/stringtie_gtf --tpm <percentile> -o /path/to/output
 ```
 
-3. Run GffCompare using all the GTFs derived from the previous step as input, and the annotation file to guide the transcripts overlap.
+3. Run GffCompare using all the GTFs derived from the previous step as input, and the annotation file to guide the transcripts overlap. The input must be a file with the paths to the GTF files, one per line.
 
 ```bash
 gffcompare -r /path/to/annotation_file -i <input_gtf_list>
