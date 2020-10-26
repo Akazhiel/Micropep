@@ -4,7 +4,7 @@
 
 A pipeline to produce micropeptide sequences from **BAM** files derived from an alignment step.
 
-![Pipelineflow](https://ibb.co/W3tzTX2)
+![Pipelineflow](https://i.ibb.co/PYQWSy6/Micropep-pipeline-flow.png)
 
 ## Notes
 
