@@ -4,6 +4,8 @@
 
 A pipeline to produce micropeptide sequences from **BAM** files derived from an alignment step.
 
+![Pipelineflow](https://ibb.co/W3tzTX2)
+
 ## Notes
 
 - This pipeline must be run using the same genome and annotation file that were used in the generation of the BAM files in the alignment step.
