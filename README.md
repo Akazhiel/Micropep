@@ -72,7 +72,7 @@ gffcompare -r /path/to/annotation_file -i <input_gtf_list>
 filter_samples.py -tf /path/to/gffcmp.tracking -gf /path/to/gffcmp.combined.gtf -s min_num_of_samples -o /path/to/output
 ```
 
-5. Obtain the aminoacid sequence of the transcripts obtained in the previous step. In this step various filters can be applied, these are the `gene_biotype`, `overlap_percentage` and `prot_size`. By default the first two filters are not applied and the last will filter out all the protein sequences above 100aa. In this step, we used the 4 most common start codons, as described in the paper by [Slavoff](https://europepmc.org/article/med/32209305). The output of this step is a tab-delimited csv file.
+5. Obtain the aminoacid sequence of the transcripts obtained in the previous step. In this step various filters can be applied, these are the `gene_biotype`, `overlap_percentage` and `prot_size`. By default the first two filters are not applied and the last will filter out all the protein sequences above 100aa. In this step, we used the 4 most common start codons, as described in the paper by [Slavoff](https://europepmc.org/article/med/32209305). The output of this step is a tab-delimited csv file. As mentioned above, the fasta file to use for this step must be the same one that was used for aligning the reads.
 
 ```bash
 get_proteins.py --fasta_file /path/to/genome_fasta --annotation_gtf /path/to/annotation_file -i /path/to/gtf_file -l <max_aas_length> -o /path/to/output
