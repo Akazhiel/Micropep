@@ -6,7 +6,7 @@ A pipeline to produce micropeptide sequences from **BAM** files derived from an 
 
 ## Notes
 
-- This pipeline must be run using the same genome and annotation file that was used in the previous alignment step.
+- This pipeline must be run using the same genome and annotation file that were used in the generation of the BAM files in the alignment step.
 
 ## Requierements
 
