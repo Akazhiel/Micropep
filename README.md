@@ -40,6 +40,12 @@ make release
 
 A Dockerfile is provided with this repository. The image that is built using that file will create a docker container in which you can find an already activated conda environment with all the needed dependencies to run this pipeline.
 
+On the other hand, an already built and functional image can be downloaded from the docker hub.
+
+```bash
+docker run -v /path/to/data_folder:/Micropeptide --name Micropeptide -it akazhiel/micro:latest
+```
+
 ## Usage
 
 1. Run StringTie to assemble the transcriptome guided with the annotation file
