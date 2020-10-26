@@ -26,6 +26,12 @@ setup(
     include_package_data=False,
     package_data={"": ["RELEASE-VERSION"]},
     zip_safe=False,
+    install_requires=[
+        "setuptools",
+        "numpy",
+        "pandas",
+        "BioPython",
+    ],
     # test_suite = 'tests',
     scripts=glob.glob("*.py"),
     classifiers=[
