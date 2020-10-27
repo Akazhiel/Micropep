@@ -7,6 +7,7 @@ import pandas as pd
 from Bio import Seq
 from Bio import SeqIO
 import pyranges as pr
+from collections import defaultdict
 
 
 def obtain_fasta_chomosomes(fasta_file):
@@ -73,35 +74,25 @@ def main(
         protein_df.Chromosome.cat.remove_unused_categories()
     )
     protein_df.Fasta_seq = pr.get_fasta(protein_df, fasta_file)
-    peptide = []
+    codons = ["CTG", "GTG", "TTG", "ATG", "ACG"]
 
-    for seq in protein_df.Fasta_seq:
-        nuc = str(seq)
-        aa_seqs = [str(Seq.translate(nuc[i:], to_stop=True)) for i in range(3)]
-        peptide.append([str(seqs) for seqs in aa_seqs])
+    peptides = list()
 
-    start_codons = ["L", "M", "V", "I"]
+    for seq in protein_df.Fasta:
+        orfs = [seq[i:] for i in range(3)]
+        local_peptides = list()
+        for orf in orfs:
+            kmers = defaultdict(list)
+            for i in range(0, len(orf) - 2, 3):
+                kmers[orf[i : i + 3]].append(i)
+            for c in codons:
+                local_peptides += [
+                    str(Seq.translate(orf[i:], to_stop=True)) for i in kmers[c]
+                ]
+        peptides.append(list(set(local_peptides)))
 
     final_df = protein_df.df
-    tmp_ = final_df
-    tmp_["Sequence"] = peptide
-    tmp_ = tmp_.explode("Sequence")
-
-    seqs = []
-    possible_seqs = []
-
-    for seq in tmp_["Sequence"]:
-        for x in start_codons:
-            seq = str(seq)
-            seq = seq[seq.find(x) :]
-            if len(seq) == 1 or len(seq) == 0:
-                seq = ""
-            else:
-                seq = seq
-            seqs.append(seq)
-
-    possible_seqs = [seqs[n : n + 12] for n in range(0, len(seqs), 12)]
-    final_df["Sequence"] = possible_seqs
+    final_df["Sequence"] = peptides
     final_df = final_df.explode("Sequence")
     final_df = final_df[final_df["Sequence"].str.strip().astype(bool)]
     results = (
