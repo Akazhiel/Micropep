@@ -79,7 +79,7 @@ filter_samples.py -tf /path/to/gffcmp.tracking -gf /path/to/gffcmp.combined.gtf 
 5. Obtain the aminoacid sequence of the transcripts obtained in the previous step. In this step the filter `prot_size` can be applied. By default, all peptides that are above 100aa will be filtered out. In this step, we used the 4 most common start codons, as described in the paper by [Slavoff](https://europepmc.org/article/med/32209305). The output of this step is a tab-delimited csv file. As mentioned above, the fasta file to use for this step must be the same one that was used for aligning the reads.
 
 ```bash
-get_proteins.py --fasta_file /path/to/genome_fasta --annotation_gtf /path/to/annotation_file -i /path/to/gtf_file -l <max_aas_length> -o /path/to/output
+pepget.py --fasta_file /path/to/genome_fasta --annotation_gtf /path/to/annotation_file -i /path/to/gtf_file -l <max_aas_length> -o /path/to/output
 ```
 
 6. Blast the obtained protein sequences against the database of your choice. This script includes two flags to filter the results obtained. One flag is for the amount of mismatches allowed (Protein sequences with more than the specified amount will be filtered out), and a boolean flag to specify if we want to exclude these results from the final file or in the other hand, keep only these ones and filter out the rest.
