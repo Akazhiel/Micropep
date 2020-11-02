@@ -18,8 +18,12 @@ def main(fasta_file, codon_list, input_file, output, aa_length):
         else "Micropeptide_data.csv"
     )
 
-    if Path(fasta_file).suffix == "*.gz":
-        print(
+    check_compressed = subprocess.run(
+        f"file {fasta_file}", shell=True, capture_output=True
+    )
+
+    if "compressed" in check_compressed.stdout.decode("utf-8").strip():
+        raise SystemExit(
             "Unable to process compressed fasta. Please uncompress before starting."
         )
     else:
