@@ -11,7 +11,7 @@ from pathlib import Path
 from collections import defaultdict
 
 
-def main(fasta_file, input_file, output, aa_length):
+def main(fasta_file, codon_list, input_file, output, aa_length):
     results_name = (
         output
         if output and not os.path.isfile(output)
@@ -40,7 +40,7 @@ def main(fasta_file, input_file, output, aa_length):
     input_df.Chromosome = input_df.Chromosome.cat.remove_unused_categories()
     input_df.Fasta = pr.get_fasta(input_df, fasta_file)
 
-    codons = ["CTG", "GTG", "TTG", "ATG", "ACG"]
+    codons = codon_list
 
     peptides = list()
 
@@ -83,6 +83,16 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
+        "--codons",
+        "-c",
+        type=str,
+        default=["ATG"],
+        nargs="+",
+        required=False,
+        help="Provide the codons by which the micropeptides start in DNA sequence.",
+    )
+
+    parser.add_argument(
         "--input_file",
         "-i",
         type=str,
@@ -110,6 +120,7 @@ if __name__ == "__main__":
 
     main(
         args.fasta_file,
+        args.codons,
         args.input_file,
         args.output,
         args.length,
