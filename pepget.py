@@ -62,9 +62,9 @@ def main(fasta_file, codon_list, input_file, output, aa_length):
     final_df = final_df.explode("Sequence")
     final_df = final_df[final_df["Sequence"].str.strip().astype(bool)]
     final_df = final_df[
-        (final_df["Sequence"].str.len() <= aa_length)
-        & (final_df["Sequence"].str.len() > 5)
-    ]
+        (final_df["Sequence"].str.len() <= aa_length[1])
+        & (final_df["Sequence"].str.len() > aa_length[0])
+    ].reset_index(drop=True)
     final_df["Protein_ID"] = "Protein_" + pd.Series(
         np.arange(1, len(final_df) + 1, 1)
     ).astype(str)
@@ -112,8 +112,9 @@ if __name__ == "__main__":
         "--length",
         "-l",
         type=int,
+        nargs="+",
         required=False,
-        default=100,
+        default=[0, 100],
         help="Peptides with more length than the specified value will be filtered out.",
     )
     args = parser.parse_args()
